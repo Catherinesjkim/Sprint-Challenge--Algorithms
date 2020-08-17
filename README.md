@@ -41,6 +41,7 @@ Write out your proposed algorithm in plain English or pseudocode AND give the ru
 ### Code Challenges
 
 #### 3. Use recursion to complete the `count_th()` function _(3 points)_
+
 Inside the `recursive_count_th` directory you'll find the `count_th.py` file. In this file, please add your recursive implementation to the `count_th()` method following these rules:
 
 * Your function should take in a signle parameter (a string `word`)
@@ -57,7 +58,7 @@ You have been given a robot with very basic capabilities:
 
   * It can move left or right.
   * It can pick up an item
-    * If it tries to pick up an item while already holding one, it will swap the items instead.
+  * If it tries to pick up an item while already holding one, it will swap the items instead.
   * It can compare the item it's holding to the item in front of it.
   * It can switch a light on its head on or off.
 
