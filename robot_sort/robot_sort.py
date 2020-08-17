@@ -1,3 +1,11 @@
+"""
+* Tests should run in far less than 1 second: Done in 0.052 seconds
+
+* We discussed a sorting method this week that might be useful. Which one? Selection sort because it repeatedly selects the next smallest element and swaps it into place. 
+
+* The robot has exactly one bit of memory: its light. Why is this important? You only need a little bit of state to sort through a stack of cards, one by one. 
+
+"""
 class SortingRobot:
     def __init__(self, l):
         """
@@ -81,11 +89,13 @@ class SortingRobot:
         Turn on the robot's light
         """
         self._light = "ON"
+        
     def set_light_off(self):
         """
         Turn off the robot's light
         """
         self._light = "OFF"
+        
     def light_is_on(self):
         """
         Returns True if the robot's light is on and False otherwise.
@@ -96,9 +106,50 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
+        # Robot starts at position 0 
+        # Pick up current card and check to see if robot can move right
+        # Compare Card and if Card is Higher, swap card out
+        # Move all the way in one direction doing swap
+        # Light Off Compare >, Light On Compare >
         # Fill this out
-        pass
-
+        # Pick up first item
+        self.swap_item()
+        self.move_right()
+        self.set_light_on()
+        
+        # Light Off Compare <, Light On Compare >
+        while self.light_is_on():
+            self.set_light_off()
+            
+            # Pick up current card and check to see if robot can move right
+            while self.compare_item() is not None:
+                while self.can_move_right():
+                    # Compare Card and if Card is Higher, swap card out
+                    # Move all the way in one direction doing swap
+                    if self.compare_item() == 1:
+                        self.swap_item()
+                        self.move_right()
+                        self.set_light_on()
+                    else:
+                        self.move_right()
+                        
+                while self.can_move_left() and self.compare_item() is not None:
+                    # Compare Card and if Card is Higher, swap card out
+                    # Move all the way in one direction doing swap
+                    if self.compare_item() == 1:
+                        self.swap_item()
+                        self.move_left()
+                        self.set_light_on()
+                    else:
+                        self.move_left()
+            
+            if self.can_move_right():
+                self.swap_item()
+                self.move_right()
+                self.swap_item()
+                self.move_right()
+        self.swap_item()
+            
 
 if __name__ == "__main__":
     # Test our your implementation from the command line
